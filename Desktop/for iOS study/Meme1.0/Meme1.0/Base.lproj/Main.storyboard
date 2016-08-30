@@ -23,7 +23,11 @@
                                 <items>
                                     <navigationItem id="pIW-B0-TbM">
                                         <leftBarButtonItems>
-                                            <barButtonItem systemItem="action" id="ZL7-K1-fbt"/>
+                                            <barButtonItem systemItem="action" id="ZL7-K1-fbt">
+                                                <connections>
+                                                    <action selector="shareMeme:" destination="uRl-lC-Ehj" id="wMC-ch-2xD"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem id="A4e-vd-27g"/>
                                         </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="I5P-Xk-9RN">
@@ -173,6 +177,9 @@
                         <outlet property="bottomTextField" destination="BtN-0q-KeI" id="dVn-ga-FM6"/>
                         <outlet property="cameraButton" destination="Alg-el-K9u" id="0Jc-S4-kPu"/>
                         <outlet property="imagePickerView" destination="k0X-MF-Tcs" id="Pp2-1O-Vuv"/>
+                        <outlet property="navBar" destination="Re2-l2-d84" id="iaO-ik-YuD"/>
+                        <outlet property="shareButton" destination="ZL7-K1-fbt" id="agu-0q-e33"/>
+                        <outlet property="toolBar" destination="jnX-mD-5fR" id="qJQ-s9-EOD"/>
                         <outlet property="topTextField" destination="w1d-sz-vmw" id="y0N-PA-a0Y"/>
                     </connections>
                 </viewController>
