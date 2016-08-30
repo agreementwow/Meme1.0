@@ -8,15 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    let memeTextAttributes = [
+        NSStrokeColorAttributeName : UIColor.blackColor(),
+        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName : 8
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -24,7 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
     }
 
-
+    //pick an image from album
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
         let controller = UIImagePickerController()
         controller.delegate = self
@@ -32,6 +46,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
+    //pick an image from camera
     @IBAction func pickImageFromCamera(sender: AnyObject) {
         let controller = UIImagePickerController()
         controller.delegate = self
@@ -53,6 +68,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func cancelActions(sender: AnyObject) {
         imagePickerView.image = nil
+    }
+    
+    //clear textfield when begin editing
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
+    }
+    
+    //dismiss the keyboard when pressing return
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

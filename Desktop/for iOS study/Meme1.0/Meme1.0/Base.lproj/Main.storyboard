@@ -18,6 +18,60 @@
                     <view key="view" contentMode="scaleToFill" id="M3v-Sf-a5K">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Re2-l2-d84">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="pIW-B0-TbM">
+                                        <leftBarButtonItems>
+                                            <barButtonItem systemItem="action" id="ZL7-K1-fbt"/>
+                                            <barButtonItem id="A4e-vd-27g"/>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="I5P-Xk-9RN">
+                                            <connections>
+                                                <action selector="cancelActions:" destination="uRl-lC-Ehj" id="sRS-QB-WBs"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1d-sz-vmw">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="283" id="Ool-Pb-NVB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ool-Pb-NVB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ool-Pb-NVB"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BtN-0q-KeI">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnX-mD-5fR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Pick" width="224" id="DUg-cW-xC5">
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="uRl-lC-Ehj" id="aif-3e-4X4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="Alg-el-K9u">
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="uRl-lC-Ehj" id="5AZ-MR-GXR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0X-MF-Tcs">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
@@ -36,53 +90,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Re2-l2-d84">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem id="pIW-B0-TbM">
-                                        <leftBarButtonItems>
-                                            <barButtonItem systemItem="action" id="ZL7-K1-fbt"/>
-                                            <barButtonItem id="A4e-vd-27g"/>
-                                        </leftBarButtonItems>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="I5P-Xk-9RN">
-                                            <connections>
-                                                <action selector="cancelActions:" destination="uRl-lC-Ehj" id="sRS-QB-WBs"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1d-sz-vmw">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BtN-0q-KeI">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnX-mD-5fR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="Pick" width="224" id="DUg-cW-xC5">
-                                        <connections>
-                                            <action selector="pickImageFromAlbum:" destination="uRl-lC-Ehj" id="aif-3e-4X4"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="camera" id="Alg-el-K9u">
-                                        <connections>
-                                            <action selector="pickImageFromCamera:" destination="uRl-lC-Ehj" id="5AZ-MR-GXR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BtN-0q-KeI" firstAttribute="top" secondItem="k0X-MF-Tcs" secondAttribute="bottom" constant="30" id="0rU-d5-nHN">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
+                            <constraint firstItem="w1d-sz-vmw" firstAttribute="centerX" secondItem="M3v-Sf-a5K" secondAttribute="centerX" id="4AA-hV-hUc"/>
                             <constraint firstItem="Re2-l2-d84" firstAttribute="top" secondItem="XNu-Jk-189" secondAttribute="bottom" constant="20" id="4Vf-Pm-yOX">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -95,8 +109,6 @@
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="k0X-MF-Tcs" firstAttribute="centerY" secondItem="M3v-Sf-a5K" secondAttribute="centerY" id="e3N-mU-v0F"/>
-                            <constraint firstItem="w1d-sz-vmw" firstAttribute="leading" secondItem="M3v-Sf-a5K" secondAttribute="leadingMargin" constant="39" id="eVi-dM-3uV"/>
-                            <constraint firstItem="w1d-sz-vmw" firstAttribute="centerX" secondItem="M3v-Sf-a5K" secondAttribute="centerX" id="gWk-Vi-85e"/>
                             <constraint firstItem="k0X-MF-Tcs" firstAttribute="leading" secondItem="w1d-sz-vmw" secondAttribute="leading" id="gwG-SA-dUN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jnX-mD-5fR" secondAttribute="trailing" constant="-20" id="kSd-lm-Gy0"/>
                             <constraint firstItem="LJT-Pu-i3p" firstAttribute="top" secondItem="jnX-mD-5fR" secondAttribute="bottom" constant="21" id="pbe-me-rj2">
@@ -106,18 +118,17 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="k0X-MF-Tcs"/>
                                 <exclude reference="Re2-l2-d84"/>
                                 <exclude reference="w1d-sz-vmw"/>
                                 <exclude reference="BtN-0q-KeI"/>
                                 <exclude reference="jnX-mD-5fR"/>
+                                <exclude reference="k0X-MF-Tcs"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4Vf-Pm-yOX"/>
                                 <exclude reference="AFQ-i8-Fy8"/>
                                 <exclude reference="xtn-Im-Xqg"/>
-                                <exclude reference="eVi-dM-3uV"/>
-                                <exclude reference="gWk-Vi-85e"/>
+                                <exclude reference="4AA-hV-hUc"/>
                                 <exclude reference="RnV-ez-iBi"/>
                                 <exclude reference="baw-dH-aPu"/>
                                 <exclude reference="e3N-mU-v0F"/>
@@ -132,18 +143,17 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="k0X-MF-Tcs"/>
                                 <include reference="Re2-l2-d84"/>
                                 <include reference="w1d-sz-vmw"/>
                                 <include reference="BtN-0q-KeI"/>
                                 <include reference="jnX-mD-5fR"/>
+                                <include reference="k0X-MF-Tcs"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4Vf-Pm-yOX"/>
                                 <include reference="AFQ-i8-Fy8"/>
                                 <include reference="xtn-Im-Xqg"/>
-                                <include reference="eVi-dM-3uV"/>
-                                <include reference="gWk-Vi-85e"/>
+                                <include reference="4AA-hV-hUc"/>
                                 <include reference="RnV-ez-iBi"/>
                                 <include reference="baw-dH-aPu"/>
                                 <include reference="e3N-mU-v0F"/>
@@ -160,8 +170,10 @@
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="BtN-0q-KeI" id="dVn-ga-FM6"/>
                         <outlet property="cameraButton" destination="Alg-el-K9u" id="0Jc-S4-kPu"/>
                         <outlet property="imagePickerView" destination="k0X-MF-Tcs" id="Pp2-1O-Vuv"/>
+                        <outlet property="topTextField" destination="w1d-sz-vmw" id="y0N-PA-a0Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TX-Fa-TWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
