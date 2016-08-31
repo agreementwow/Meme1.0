@@ -38,12 +38,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
         topTextField.delegate = self
         bottomTextField.delegate = self
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,12 +90,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
+        if topTextField.isFirstResponder() {
+            topTextField.resignFirstResponder()
+        } else if bottomTextField.isFirstResponder() {
+            bottomTextField.resignFirstResponder()
+        }
     }
     
     //clear textfield when begin editing
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField.text == "TOP" || textField.text == "BOTTOM" {
-        textField.text = ""
+        if textField.isFirstResponder() {
+            if textField.text == "TOP" || textField.text == "BOTTOM" {
+                textField.text = ""
+            }
         }
     }
     
@@ -118,11 +125,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        if bottomTextField.isFirstResponder() {
         view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillHide(notification:NSNotification) {
+        if bottomTextField.isFirstResponder() {
         view.frame.origin.y = 0
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
