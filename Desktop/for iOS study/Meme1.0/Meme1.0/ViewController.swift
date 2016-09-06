@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     var memedImage: UIImage!
+    var editingMeme : Meme!
     
     let memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -25,15 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName : 8
     ]
-    
-    //initialize Meme
-    struct Meme {
-        let topText: String?
-        let btmText: String?
-        let image: UIImage?
-        let memedImage : UIImage!
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         topTextField.text = "TOP"
@@ -50,7 +43,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-        shareButton.enabled = (imagePickerView.image != nil)
+        shareButton.enabled = (imagePickerView.image != nil) || (editingMeme != nil)
+        
+        if editingMeme != nil {
+            self.topTextField.text = editingMeme.topText
+            self.bottomTextField.text = editingMeme.btmText
+            self.imagePickerView.image = editingMeme.image
+            editingMeme = nil
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -87,14 +87,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func cancelActions(sender: AnyObject) {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        imagePickerView.image = nil
-        if topTextField.isFirstResponder() {
-            topTextField.resignFirstResponder()
-        } else if bottomTextField.isFirstResponder() {
-            bottomTextField.resignFirstResponder()
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //clear textfield when begin editing
@@ -162,6 +155,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //create a memeImage
     func save() {
         let meme = Meme(topText: topTextField.text!, btmText: bottomTextField.text!, image: imagePickerView.image, memedImage: memedImage)
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     //share memeImage
@@ -175,7 +172,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if success == true {
                 self.save()
                 self.dismissViewControllerAnimated(true, completion: nil)
-                
             }
         }
     }
