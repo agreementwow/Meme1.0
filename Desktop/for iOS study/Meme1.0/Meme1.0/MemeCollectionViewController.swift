@@ -55,6 +55,8 @@ class MemeCollectionViewController: UICollectionViewController {
         memeFlowLayout.minimumInteritemSpacing = space
         memeFlowLayout.minimumLineSpacing = space
         memeFlowLayout.itemSize = CGSizeMake(dimension, dimension)
+        
+        
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewID") as! MemeDetailViewController

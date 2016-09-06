@@ -11,6 +11,7 @@ import UIKit
 class MemeCollectionViewCell: UICollectionViewCell {
 //    @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
+    
 //    @IBOutlet weak var btmText: UILabel!
     
 }
